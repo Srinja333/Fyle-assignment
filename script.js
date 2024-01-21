@@ -1,4 +1,4 @@
-const TOKEN="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"
+const TOKEN="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"
 const USER_API="https://api.github.com/users/Srinja333"
 const REPO_API="https://api.github.com/users/Srinja333/repos"
 
@@ -20,11 +20,14 @@ async function fetchUserData() {
   const apiUrl = USER_API;
 
   try {
-    const response = await fetch(apiUrl,{
-      headers : {
-        "Authorization": "Bearer " + TOKEN
-    }
-    });
+    const response = await fetch(apiUrl
+    //   ,{
+    //   headers : {
+    //     "Authorization": "Bearer " + TOKEN
+    // }
+    // }
+    
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -36,11 +39,14 @@ async function fetchRepoData() {
   const apiUrl = REPO_API;
 
   try {
-    const response = await fetch(apiUrl,{
-      headers : {
-        "Authorization": "Bearer " + TOKEN
-    }
-    });
+    const response = await fetch(apiUrl
+    //   ,{
+    //   headers : {
+    //     "Authorization": "Bearer " + TOKEN
+    // }
+    // }
+    
+    );
     const data = await response.json();
 
     return data;
@@ -200,11 +206,14 @@ function helper(mTop, data, allCards, userData, repoData) {
     const apiUrl = url;
 
     try {
-      const response = await fetch(apiUrl,{
-        headers : {
-          "Authorization": "Bearer " + TOKEN
-      }
-      });
+      const response = await fetch(apiUrl
+      //   ,{
+      //   headers : {
+      //     "Authorization": "Bearer " + TOKEN
+      // }
+      // }
+      
+      );
       const data = await response.json();
       return data;
     } catch (error) {
