@@ -1,4 +1,4 @@
-const token="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"
+const token="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"
 
 
 
@@ -95,6 +95,8 @@ function helper(mTop, data, allCards, userData, repoData) {
         ) {
           tempCards.push(allCards[i]);
         }
+
+
       }
     } catch (err) {
       console.error("function failed:", err);
@@ -103,6 +105,12 @@ function helper(mTop, data, allCards, userData, repoData) {
       tempRepoData = [...tempCards];
       mTop = 15;
       let paginationMarginTop = mTop + tempRepoData.length;
+
+      if(tempRepoData.length==0){
+        alert("no data found, now you will redirect to initial state")
+        helper(15, 10, allCards, userData, []);
+      }
+      else{
       helper(
         paginationMarginTop,
         tempRepoData.length,
@@ -110,6 +118,7 @@ function helper(mTop, data, allCards, userData, repoData) {
         userData,
         tempRepoData
       );
+      }
     }
   });
 
