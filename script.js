@@ -1,3 +1,7 @@
+const token="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"
+
+
+
 const fetcher = async () => {
   const userData = await fetchUserData();
   const repoData = await fetchRepoData();
@@ -14,7 +18,11 @@ async function fetchUserData() {
   const apiUrl = "https://api.github.com/users/Srinja333";
 
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl,{
+      headers : {
+        "Authorization": "Bearer " + token
+    }
+    });
     const data = await response.json();
     return data;
   } catch (error) {
@@ -26,7 +34,11 @@ async function fetchRepoData() {
   const apiUrl = "https://api.github.com/users/Srinja333/repos";
 
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl,{
+      headers : {
+        "Authorization": "Bearer " + token
+    }
+    });
     const data = await response.json();
 
     return data;
@@ -67,9 +79,9 @@ function helper(mTop, data, allCards, userData, repoData) {
     try {
       startLoading()
       let tempSearchedData = searchedData.value;
-      for (const card of allCards) {
+      for (let i=0;i<allCards.length;i++) {
         const particularCardlanguages = await fetchLanguages(
-          card?.languages_url
+          allCards[i]?.languages_url
         );
         const keys = [];
 
@@ -78,10 +90,10 @@ function helper(mTop, data, allCards, userData, repoData) {
         }
         if (
           keys.includes(tempSearchedData) ||
-          card?.name?.includes(tempSearchedData) ||
-          card?.description?.includes(tempSearchedData)
+          allCards[i]?.name?.includes(tempSearchedData) ||
+          allCards[i]?.description?.includes(tempSearchedData)
         ) {
-          tempCards.push(card);
+          tempCards.push(allCards[i]);
         }
       }
     } catch (err) {
@@ -173,7 +185,11 @@ function helper(mTop, data, allCards, userData, repoData) {
     const apiUrl = url;
 
     try {
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl,{
+        headers : {
+          "Authorization": "Bearer " + token
+      }
+      });
       const data = await response.json();
       return data;
     } catch (error) {
