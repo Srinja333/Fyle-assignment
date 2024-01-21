@@ -1,4 +1,4 @@
-const TOKEN="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"
+const TOKEN="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"
 const USER_API="https://api.github.com/users/Srinja333"
 const REPO_API="https://api.github.com/users/Srinja333/repos"
 
@@ -202,7 +202,7 @@ function helper(mTop, data, allCards, userData, repoData) {
     try {
       const response = await fetch(apiUrl,{
         headers : {
-          "Authorization": "Bearer " + token
+          "Authorization": "Bearer " + TOKEN
       }
       });
       const data = await response.json();
