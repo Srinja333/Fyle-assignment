@@ -1,4 +1,6 @@
-const token="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"
+const TOKEN="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"
+const USER_API="https://api.github.com/users/Srinja333"
+const REPO_API="https://api.github.com/users/Srinja333/repos"
 
 
 
@@ -15,12 +17,12 @@ const fetcher = async () => {
 
 //fetch github data
 async function fetchUserData() {
-  const apiUrl = "https://api.github.com/users/Srinja333";
+  const apiUrl = USER_API;
 
   try {
     const response = await fetch(apiUrl,{
       headers : {
-        "Authorization": "Bearer " + token
+        "Authorization": "Bearer " + TOKEN
     }
     });
     const data = await response.json();
@@ -31,12 +33,12 @@ async function fetchUserData() {
 }
 
 async function fetchRepoData() {
-  const apiUrl = "https://api.github.com/users/Srinja333/repos";
+  const apiUrl = REPO_API;
 
   try {
     const response = await fetch(apiUrl,{
       headers : {
-        "Authorization": "Bearer " + token
+        "Authorization": "Bearer " + TOKEN
     }
     });
     const data = await response.json();
@@ -81,7 +83,11 @@ function helper(mTop, data, allCards, userData, repoData) {
       let tempSearchedData = searchedData.value;
       for (let i=0;i<allCards.length;i++) {
         const particularCardlanguages = await fetchLanguages(
-          allCards[i]?.languages_url
+          allCards[i]?.languages_url,{
+            headers : {
+              "Authorization": "Bearer " + TOKEN
+          }
+          }
         );
         const keys = [];
 
