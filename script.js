@@ -1,8 +1,5 @@
-const TOKEN="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"
-const USER_API="https://api.github.com/users/Srinja333"
-const REPO_API="https://api.github.com/users/Srinja333/repos"
-
-
+const USER_API = "https://api.github.com/users/Srinja333";
+const REPO_API = "https://api.github.com/users/Srinja333/repos";
 
 const fetcher = async () => {
   const userData = await fetchUserData();
@@ -20,14 +17,7 @@ async function fetchUserData() {
   const apiUrl = USER_API;
 
   try {
-    const response = await fetch(apiUrl
-    //   ,{
-    //   headers : {
-    //     "Authorization": "Bearer " + TOKEN
-    // }
-    // }
-    
-    );
+    const response = await fetch(apiUrl);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -39,14 +29,7 @@ async function fetchRepoData() {
   const apiUrl = REPO_API;
 
   try {
-    const response = await fetch(apiUrl
-    //   ,{
-    //   headers : {
-    //     "Authorization": "Bearer " + TOKEN
-    // }
-    // }
-    
-    );
+    const response = await fetch(apiUrl);
     const data = await response.json();
 
     return data;
@@ -85,15 +68,11 @@ function helper(mTop, data, allCards, userData, repoData) {
     let tempRepoData = [];
     let tempCards = [];
     try {
-      startLoading()
+      startLoading();
       let tempSearchedData = searchedData.value;
-      for (let i=0;i<allCards.length;i++) {
+      for (let i = 0; i < allCards.length; i++) {
         const particularCardlanguages = await fetchLanguages(
-          allCards[i]?.languages_url,{
-            headers : {
-              "Authorization": "Bearer " + TOKEN
-          }
-          }
+          allCards[i]?.languages_url
         );
         const keys = [];
 
@@ -107,29 +86,26 @@ function helper(mTop, data, allCards, userData, repoData) {
         ) {
           tempCards.push(allCards[i]);
         }
-
-
       }
     } catch (err) {
       console.error("function failed:", err);
     } finally {
-      stopLoading()
+      stopLoading();
       tempRepoData = [...tempCards];
       mTop = 15;
       let paginationMarginTop = mTop + tempRepoData.length;
 
-      if(tempRepoData.length==0){
-        alert("no data found, now you will redirect to initial state")
+      if (tempRepoData.length == 0) {
+        alert("no data found, now you will redirect to initial state");
         helper(15, 10, allCards, userData, []);
-      }
-      else{
-      helper(
-        paginationMarginTop,
-        tempRepoData.length,
-        allCards,
-        userData,
-        tempRepoData
-      );
+      } else {
+        helper(
+          paginationMarginTop,
+          tempRepoData.length,
+          allCards,
+          userData,
+          tempRepoData
+        );
       }
     }
   });
@@ -206,14 +182,7 @@ function helper(mTop, data, allCards, userData, repoData) {
     const apiUrl = url;
 
     try {
-      const response = await fetch(apiUrl
-      //   ,{
-      //   headers : {
-      //     "Authorization": "Bearer " + TOKEN
-      // }
-      // }
-      
-      );
+      const response = await fetch(apiUrl);
       const data = await response.json();
       return data;
     } catch (error) {
