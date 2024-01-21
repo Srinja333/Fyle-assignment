@@ -68,7 +68,6 @@ function helper(mTop, data, allCards, userData, repoData) {
       startLoading()
       let tempSearchedData = searchedData.value;
       for (const card of allCards) {
-        // console.log("79",card)
         const particularCardlanguages = await fetchLanguages(
           card?.languages_url
         );
@@ -77,14 +76,11 @@ function helper(mTop, data, allCards, userData, repoData) {
         for (const [key, value] of Object.entries(particularCardlanguages)) {
           keys.push(key);
         }
-
-        // console.log("kkk",keys)
         if (
           keys.includes(tempSearchedData) ||
           card?.name?.includes(tempSearchedData) ||
           card?.description?.includes(tempSearchedData)
         ) {
-          // console.log("cardtt",card)
           tempCards.push(card);
         }
       }
