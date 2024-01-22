@@ -1,5 +1,5 @@
 
-const TOKEN="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"
+const TOKEN="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"
 const USER_API = "https://api.github.com/users/Srinja333";
 const REPO_API = "https://api.github.com/users/Srinja333/repos";
 
