@@ -1,5 +1,5 @@
 
-// const TOKEN="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"
+const TOKEN="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"
 const USER_API = "https://api.github.com/users/Srinja333";
 const REPO_API = "https://api.github.com/users/Srinja333/repos";
 
@@ -20,11 +20,11 @@ async function fetchUserData() {
 
   try {
     const response = await fetch(apiUrl
-      // ,{
-      //   headers : {
-      //     "Authorization": "Bearer " + TOKEN
-      // }
-      // }
+      ,{
+        headers : {
+          "Authorization": "Bearer " + TOKEN
+      }
+      }
       );
     const data = await response.json();
     return data;
@@ -38,11 +38,11 @@ async function fetchRepoData() {
 
   try {
     const response = await fetch(apiUrl
-    //   ,{
-    //   headers : {
-    //     "Authorization": "Bearer " + TOKEN
-    // }
-    // }
+      ,{
+      headers : {
+        "Authorization": "Bearer " + TOKEN
+    }
+    }
     );
     const data = await response.json();
 
@@ -93,10 +93,17 @@ function helper(mTop, data, allCards, userData, repoData) {
         for (const [key, value] of Object.entries(particularCardlanguages)) {
           keys.push(key);
         }
+    
         if (
           keys.includes(tempSearchedData) ||
           allCards[i]?.name?.includes(tempSearchedData) ||
-          allCards[i]?.description?.includes(tempSearchedData)
+          allCards[i]?.description?.includes(tempSearchedData)||
+          keys.includes(tempSearchedData.toLowerCase()) ||
+          allCards[i]?.name?.includes(tempSearchedData.toLowerCase()) ||
+          allCards[i]?.description?.includes(tempSearchedData.toLowerCase())||
+          keys.includes(tempSearchedData.toUpperCase()) ||
+          allCards[i]?.name?.includes(tempSearchedData.toUpperCase()) ||
+          allCards[i]?.description?.includes(tempSearchedData.toUpperCase())
         ) {
           tempCards.push(allCards[i]);
         }
@@ -197,11 +204,11 @@ function helper(mTop, data, allCards, userData, repoData) {
 
     try {
       const response = await fetch(apiUrl
-      //   ,{
-      //   headers : {
-      //     "Authorization": "Bearer " + TOKEN
-      // }
-      // }
+        ,{
+        headers : {
+          "Authorization": "Bearer " + TOKEN
+      }
+      }
       );
       const data = await response.json();
       return data;
