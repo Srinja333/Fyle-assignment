@@ -1,5 +1,5 @@
 
-const TOKEN="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"
+// const TOKEN="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"
 const USER_API = "https://api.github.com/users/Srinja333";
 const REPO_API = "https://api.github.com/users/Srinja333/repos";
 
@@ -20,11 +20,11 @@ async function fetchUserData() {
 
   try {
     const response = await fetch(apiUrl
-      ,{
-        headers : {
-          "Authorization": "Bearer " + TOKEN
-      }
-      }
+      // ,{
+      //   headers : {
+      //     "Authorization": "Bearer " + TOKEN
+      // }
+      // }
       );
     const data = await response.json();
     return data;
@@ -38,11 +38,11 @@ async function fetchRepoData() {
 
   try {
     const response = await fetch(apiUrl
-      ,{
-      headers : {
-        "Authorization": "Bearer " + TOKEN
-    }
-    }
+    //   ,{
+    //   headers : {
+    //     "Authorization": "Bearer " + TOKEN
+    // }
+    // }
     );
     const data = await response.json();
 
@@ -204,11 +204,11 @@ function helper(mTop, data, allCards, userData, repoData) {
 
     try {
       const response = await fetch(apiUrl
-        ,{
-        headers : {
-          "Authorization": "Bearer " + TOKEN
-      }
-      }
+      //   ,{
+      //   headers : {
+      //     "Authorization": "Bearer " + TOKEN
+      // }
+      // }
       );
       const data = await response.json();
       return data;
